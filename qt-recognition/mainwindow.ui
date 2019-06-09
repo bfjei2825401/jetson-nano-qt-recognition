@@ -54,29 +54,29 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,0,0,0">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0,0,0">
           <property name="spacing">
            <number>10</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_7" stretch="1,13">
-            <item>
-             <widget class="QLabel" name="labelTitleVideo">
-              <property name="font">
-               <font>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Image</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
+           <widget class="QLabel" name="labelTitleVideo">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Image</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0">
             <item>
              <widget class="QFrame" name="frameImage">
               <property name="sizePolicy">
@@ -114,8 +114,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>131</width>
-                 <height>31</height>
+                 <width>0</width>
+                 <height>0</height>
                 </rect>
                </property>
                <property name="minimumSize">
@@ -126,8 +126,8 @@
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>605</width>
-                 <height>390</height>
+                 <width>16777215</width>
+                 <height>16777215</height>
                 </size>
                </property>
                <property name="font">

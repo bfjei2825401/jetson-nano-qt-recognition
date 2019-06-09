@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QDebug>
-#include <opencv.hpp>
+#include <opencv/cv.hpp>
 #include <QImage>
 #include <QPixmap>
 #include <QString>
@@ -41,6 +41,7 @@ private:
     QString filename;
     QPoint centralPos(QSize windowSize, QSize parentWindowSize);
     MyRecognition myrecognition;
+    void setStretchImageOnCenter(QSize size);
 };
 
 #endif // MAINWINDOW_H

@@ -22,13 +22,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-LIBS += /usr/local/lib/libopencv_* \
-        /usr/local/lib/libjetson*
+LIBS += /usr/local/lib/libjetson* \
+        /usr/lib/libopencv_*
 
-INCLUDEPATH += /usr/local/include \
-               /usr/local/include/opencv4 \
-               /usr/local/include/opencv4/opencv2 \
-               /usr/local/cuda/include \
+INCLUDEPATH += /usr/local/cuda/include \
                /usr/local/include/jetson-inference \
                /usr/local/include/jetson-utils
 

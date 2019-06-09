@@ -16,37 +16,41 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_buttonSelectImage_clicked()
 {
-    QString default_dir = tr(".");
-    this->filename = QFileDialog::getOpenFileName(0, tr("Select one image to recognize"), default_dir, "Images(*.jpg *.jpeg)", 0, 0);
-    Mat imgC = cv::imread(this->filename.toStdString(), IMREAD_COLOR);
-    if ( !imgC.empty() )
+    QString default_dir = tr("/home/salieri/Project/Github/jetson-inference/data/images/");
+    QString path = QFileDialog::getOpenFileName(this, tr("Select one image to recognize"), default_dir, "Image File(*.jpg *.jpeg)");
+    if ( path.length() == 0 )
     {
-        Mat imgS;
-        cvtColor(imgC, imgS, cv::COLOR_BGR2RGB);
-        QImage tmp(imgS.data, imgS.cols, imgS.rows, imgS.step, QImage::Format_RGB888);
-        QSize windowSize = ui->frameImage->size();
-        QSize imageSize = tmp.size();
-        qDebug() << imageSize << endl;
-        imageSize.scale(windowSize, Qt::KeepAspectRatio);
-        ui->labelImageWindow->resize(imageSize);
-        ui->labelImageWindow->setPixmap(QPixmap::fromImage(tmp));
-        QPoint labelPos = this->centralPos(imageSize, windowSize);
-        ui->labelImageWindow->move(labelPos);
-        qDebug() << imageSize << endl;
-        qDebug() << windowSize << endl;
-        qDebug() << labelPos << endl;
+
+    }
+    else
+    {
+        this->filename = path;
+        Mat imgC = cv::imread(this->filename.toStdString(), IMREAD_COLOR);
+        if ( !imgC.empty() )
+        {
+            Mat imgS;
+            cvtColor(imgC, imgS, cv::COLOR_BGR2RGB);
+            QImage tmp(imgS.data, imgS.cols, imgS.rows, imgS.step, QImage::Format_RGB888);
+            this->setStretchImageOnCenter(tmp.size());
+            ui->labelImageWindow->setPixmap(QPixmap::fromImage(tmp));
+        }
     }
 //    qDebug() << filename << endl;
 }
 
 void MainWindow::on_buttonRecognize_clicked()
 {
-
+    bool result = this->myrecognition.recognize(this->filename.toStdString());
+    if ( result )
+    {
+        ui->labelClassVal->setText(QString::fromStdString(this->myrecognition.getDescription()));
+        ui->labelSimilarityVal->setText(QString::fromStdString(this->myrecognition.getConfidence()));
+    }
 }
 
 void MainWindow::on_buttonExit_clicked()
 {
-
+    this->close();
 }
 
 QPoint MainWindow::centralPos(QSize windowSize, QSize parentWindowSize)
@@ -55,4 +59,17 @@ QPoint MainWindow::centralPos(QSize windowSize, QSize parentWindowSize)
     pos.setX((parentWindowSize.width() - windowSize.width())/2);
     pos.setY((parentWindowSize.height() - windowSize.height())/2);
     return pos;
+}
+void MainWindow::setStretchImageOnCenter(QSize size)
+{
+    QSize windowSize = ui->frameImage->size();
+    qDebug() << tr("image origin size: ") <<size << endl;
+    size.scale(windowSize, Qt::KeepAspectRatio);
+    ui->labelImageWindow->resize(size);
+    QPoint labelPos = this->centralPos(size, windowSize);
+    ui->labelImageWindow->move(labelPos);
+    qDebug() << tr("image scaled size: ") << size << endl;
+    qDebug() << tr("frame size: ") << windowSize << endl;
+    qDebug() << tr("label size: ") << ui->labelImageWindow->size() << endl;
+    qDebug() << tr("image label position: ") << labelPos << endl;
 }

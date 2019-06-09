@@ -33,8 +33,8 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout_7;
     QLabel *labelTitleVideo;
+    QVBoxLayout *verticalLayout_7;
     QFrame *frameImage;
     QLabel *labelImageWindow;
     QVBoxLayout *verticalLayout_6;
@@ -78,8 +78,6 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(10);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         labelTitleVideo = new QLabel(centralwidget);
         labelTitleVideo->setObjectName(QString::fromUtf8("labelTitleVideo"));
         QFont font1;
@@ -89,8 +87,10 @@ public:
         labelTitleVideo->setFont(font1);
         labelTitleVideo->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_7->addWidget(labelTitleVideo);
+        verticalLayout_2->addWidget(labelTitleVideo);
 
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         frameImage = new QFrame(centralwidget);
         frameImage->setObjectName(QString::fromUtf8("frameImage"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -107,9 +107,9 @@ public:
         frameImage->setMidLineWidth(0);
         labelImageWindow = new QLabel(frameImage);
         labelImageWindow->setObjectName(QString::fromUtf8("labelImageWindow"));
-        labelImageWindow->setGeometry(QRect(0, 0, 131, 31));
+        labelImageWindow->setGeometry(QRect(0, 0, 0, 0));
         labelImageWindow->setMinimumSize(QSize(0, 0));
-        labelImageWindow->setMaximumSize(QSize(605, 390));
+        labelImageWindow->setMaximumSize(QSize(16777215, 16777215));
         QFont font2;
         font2.setPointSize(12);
         font2.setBold(true);
@@ -120,8 +120,6 @@ public:
 
         verticalLayout_7->addWidget(frameImage);
 
-        verticalLayout_7->setStretch(0, 1);
-        verticalLayout_7->setStretch(1, 13);
 
         verticalLayout_2->addLayout(verticalLayout_7);
 
@@ -193,7 +191,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_3);
 
-        verticalLayout_2->setStretch(0, 1);
+        verticalLayout_2->setStretch(1, 1);
 
         horizontalLayout->addLayout(verticalLayout_2);
 

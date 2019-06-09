@@ -13,10 +13,16 @@ class MyRecognition
 public:
     MyRecognition();
     ~MyRecognition();
-    string recognize(string filename);
+    bool recognize(string filename);
+    string getDescription();
+    string getConfidence();
+    string getClassIndex();
 
 private:
     imageNet* net;
+    string description;
+    string confidence;
+    string classIndex;
 };
 
 #endif // MYRECOGNITION_H
